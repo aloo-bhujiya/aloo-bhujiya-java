@@ -1,0 +1,97 @@
+package helloworld;
+
+import java.awt.event.*;
+import java.awt.*;
+
+
+public class WindowExample extends Frame implements WindowListener{
+
+	WindowExample(){
+		setSize(300,300);
+		setVisible(true);
+		addWindowListener(this);
+		
+	}
+	public void windowClosing(WindowEvent we)
+	{
+		System.out.println("windowClosing");
+		dispose();
+	}
+	
+	public void windowOpened(WindowEvent we)
+	{
+		System.out.println("windowOpened");
+	
+	}
+	public void windowClosed(WindowEvent we) {
+		System.out.println("windowClosed");
+	}
+	
+	public void windowIconified(WindowEvent we)
+	{
+		System.out.println("windowIconified");
+	}
+	
+	public void windowDeiconified(WindowEvent we) {
+		System.out.println("windowDeiconified");
+	}
+	
+	public void windowActivated(WindowEvent we)
+	{
+		System.out.println("windowActivated");
+		
+	}
+	
+	public void windowDeactivated(WindowEvent we) {
+		System.out.println("windowDeactivated");
+	}	
+	
+		public static void main(String args[]) {
+			new WindowExample();
+		}
+}
+
+
+
+
+
+package helloworld;
+
+import java.awt.event.*;
+import java.awt.*;
+import javax.swing.*;
+
+public class MouseExample extends Frame implements MouseListener {
+
+        MouseExample(){
+            setSize(300,300);
+            setVisible(true);
+            addMouseListener(this);
+        }
+    public void mouseClicked(MouseEvent e) {
+    System.out.println("Mouse Clicked");
+    }
+
+    public void mousePressed(MouseEvent e) {
+     System.out.println("Mouse Pressed");
+    }
+
+
+    public void mouseReleased(MouseEvent e) {
+        System.out.println("Mouse Released");
+    }
+
+
+    public void mouseEntered(MouseEvent e) {
+        System.out.println("Mouse Entered");
+    }
+
+
+    public void mouseExited(MouseEvent e) {
+        System.out.println("Mouse Exited");
+    }
+
+    public static void main(String[] args) {
+        new MouseExample();
+    }
+}
