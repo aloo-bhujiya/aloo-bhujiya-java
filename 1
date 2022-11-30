@@ -1,0 +1,174 @@
+package helloworld;
+import java.awt.*;
+import java.awt.event.*;
+public class clickme extends Frame implements ActionListener{
+TextField tf;
+Button b;
+clickme(){
+tf=new TextField();
+tf.setBounds(50,50,100,100);
+b=new Button("click me");
+b.setBounds(100,100,100,100);
+b.addActionListener(this);
+add(tf);
+add(b);
+setSize(300,300);
+setVisible(true);
+}
+public void actionPerformed(ActionEvent e) {
+tf.setText("Welcome");
+}
+public static void main(String[] args) {
+clickme c=new clickme();
+}
+}
+
+
+
+
+import java.awt.*;
+import java.awt.event.*;
+public class ButtonEvents extends Frame implements ActionListener
+{
+Button b1;
+Button b2;
+Button b3;
+TextField tf;
+ButtonEvents()
+{
+b1 = new Button("Submit");
+b1.setBounds(100,120,80,30);
+b2 = new Button("Cancel");
+b2.setBounds(200,120,80,30);
+b3 = new Button("Exit");
+b3.setBounds(300,120,80,30);
+//create components/GUI
+tf = new TextField();
+tf.setBounds(60,50,170,20);
+//register listener
+b1.addActionListener(this);//passing curent instance
+b2.addActionListener(this);
+b3.addActionListener(this);
+add(b1);
+add(b2);
+add(b3);
+add(tf);
+setSize(480,300);
+setVisible(true);
+}
+public void actionPerformed(ActionEvent e)
+{
+if(e.getSource() == b1)
+{
+tf.setText("You clicked Submit button");
+}
+else if(e.getSource() == b2)
+{
+tf.setText("You clicked Cancel button");
+}
+else if(e.getSource() == b3)
+{
+tf.setText("You clicked Exit button");
+}
+else
+{
+tf.setText("");
+}
+}
+public static void main(String[] args)
+{
+new ButtonEvents();
+}
+}
+
+
+
+
+
+import java.awt.*;
+import java.awt.event.*;
+class Test extends Frame implements ActionListener
+{
+Label l1,l2,l3;
+TextField t1,t2,t3;
+Test()
+{
+l1=new Label("Enter first number : ");
+l2=new Label("Enter second number : ");
+l3=new Label("Addition = ");
+t1=new TextField();
+t1.setBounds(60,50,170,20);
+t2=new TextField();
+t2.setBounds(60,50,170,20);
+t3=new TextField();
+t3.setBounds(60,50,170,20);
+GridLayout g=new GridLayout(4,2);
+setLayout(g);
+add(l1);
+add(t1);
+add(l2);
+add(t2);
+add(l3);
+add(t3);
+setSize(300,300);
+Button b1=new Button("Add");
+b1.setBounds(100,120,80,30);
+add(b1);
+b1.addActionListener(this);
+setVisible(true);
+}
+public void actionPerformed(ActionEvent ae)
+{
+int n1,n2,result;
+n1=Integer.parseInt(t1.getText());
+n2=Integer.parseInt(t2.getText());
+result=n1+n2;
+t3.setText(Integer.toString(result));
+}
+public static void main(String args[])
+{
+Test a1=new Test();
+}
+}
+
+
+
+
+import java.awt.*;
+import java.awt.event.*;
+public class EXP1D extends Frame implements
+KeyListener
+{
+Label l1;
+TextArea area;
+EXP1D()
+{
+l1=new Label();
+l1.setBounds(20,50,100,20);
+area=new TextArea();
+area.setBounds(20,80,300, 300);
+area.addKeyListener(this);
+add(l1);add(area);
+setSize(400,400);
+setLayout(null);
+setVisible(true);
+}
+public void keyPressed(KeyEvent e)
+{
+l1.setText("Key Pressed");
+}
+public void keyReleased(KeyEvent e)
+{
+l1.setText("Key Released");
+}
+public void keyTyped(KeyEvent e)
+{
+l1.setText("Key Typed");
+}
+public static void main(String[] args)
+{
+new EXP1D();
+}
+}
+
+
