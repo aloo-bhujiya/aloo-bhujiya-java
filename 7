@@ -1,0 +1,47 @@
+package helloworld;
+
+import java.net.*;
+import java.util.Scanner;
+
+public class udpsender {
+    public static void main(String[] args) throws Exception {
+        DatagramSocket ds = new DatagramSocket();
+        Scanner sc = new Scanner(System.in);
+        String str = "";
+        while (str != "stop") {
+            System.out.println("Enter message to send: ");
+            str = sc.nextLine();
+            InetAddress ip = InetAddress.getByName("127.0.0.1");
+            DatagramPacket dp = new DatagramPacket(str.getBytes(), str.length(), ip, 3333);
+            ds.send(dp);
+        }
+        ds.close();
+        sc.close();
+    }
+}
+
+
+
+
+
+
+
+package helloworld;
+import java.net.*;
+
+public class udpreceiver {
+    public static void main(String[] args) throws Exception {
+        DatagramSocket ds = new DatagramSocket(3000);
+        byte[] buf = new byte[1024];
+        DatagramPacket dp = new DatagramPacket(buf, 1024);
+        String str = new String(dp.getData(), 0, dp.getLength());
+        while (str != "stop") {
+            ds.receive(dp);
+            System.out.println("Message: " + str);
+            String strRecv = new String(dp.getData(), 0, dp.getLength());
+            System.out.println(strRecv);
+        }
+        ds.close();
+    }
+}
+
