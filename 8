@@ -1,0 +1,124 @@
+2.	package net.roseindia;
+3.	import java.sql.*;
+4.	
+5.	public class create{
+6.	public static void main(String[] args) {
+7.	System.out.println("Creating table in Mysql database table!");
+8.	try {
+9.	Class.forName("com.mysql.cj.jdbc.Driver");
+10.	System.out.println("Drivers loaded");
+11.	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_example", "root", "zmew37dk");
+12.	System.out.println("Connection Etablished");
+13.	try {
+14.	String sql="create table employee2(emp_id int, emp_name varchar(30))";
+15.	PreparedStatement ps1=con.prepareStatement(sql);
+16.	ps1.executeUpdate();
+17.	System.out.println("table created");
+18.	} catch (SQLException s)
+19.	{
+20.	    System.out.println("SQL statement is not executed! Error is: " + s.getMessage());
+21.	}
+22.	
+23.	} catch (Exception e) {
+24.	
+25.	e.printStackTrace();
+26.	}
+27.	}
+28.	}
+
+
+
+
+
+30.	import java.sql.*;
+31.	
+32.	public class create{
+33.	public static void main(String[] args) {
+34.	System.out.println("Creating table in Mysql database table!");
+35.	try {
+36.	Class.forName("com.mysql.cj.jdbc.Driver");
+37.	System.out.println("Drivers loaded");
+38.	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_example", "root", "zmew37dk");
+39.	System.out.println("Connection Etablished");
+40.	try {
+41.	String sql="create table employee2(emp_id int, emp_name varchar(30))";
+42.	PreparedStatement ps1=con.prepareStatement(sql);
+43.	ps1.executeUpdate();
+44.	System.out.println("table created");
+45.	} catch (SQLException s)
+46.	{
+47.	    System.out.println("SQL statement is not executed! Error is: " + s.getMessage());
+48.	}
+49.	
+50.	} catch (Exception e) {
+51.	
+52.	e.printStackTrace();
+53.	}
+54.	}}
+
+
+
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class InsertValues {
+
+public static void main(String[] args) {
+
+System.out.println("Inserting values in Mysql database table!");
+
+String url = "jdbc:mysql://localhost:3306/jdbc_example";
+
+try {
+
+Class.forName("com.mysql.cj.jdbc.Driver");
+
+Connection con = DriverManager.getConnection(url , "root", "zmew37dk");
+
+try {
+
+String sql = "INSERT employee2 VALUES(?,?)";
+
+PreparedStatement ps = con.prepareStatement(sql);
+
+Scanner br=new Scanner(System.in);
+
+do{
+
+System.out.println("enter id:");
+
+String id=br.nextLine();
+
+System.out.println("enter name:");
+
+String name=br.nextLine();
+
+ps.setString(1,id);
+
+ps.setString(2,name);
+
+int i=ps.executeUpdate();
+
+System.out.println(i+" records affected");
+
+System.out.println("Do you want to continue: y/n");
+
+String s=br.nextLine();
+
+if(s.startsWith("n")){
+
+break; }
+
+}while(true);
+
+} catch (SQLException s) {
+
+System.out.println("SQL statement is not executed! Error is: " + s.getMessage());}
+
+} catch (Exception e) {
+
+e.printStackTrace();
+}
+}
+}
