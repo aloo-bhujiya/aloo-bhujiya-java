@@ -1,0 +1,144 @@
+package helloworld;
+
+import java.net.*;
+
+public class InetAddress1 {
+    public static void main(String[] args) throws UnknownHostException{
+        InetAddress Address = InetAddress.getLocalHost();
+        System.out.println(Address);
+        Address = InetAddress.getByName("www.facebook.com");
+        System.out.println(Address);
+        InetAddress Aryan[] = InetAddress.getAllByName("www.facebook.com");
+
+        for(int i = 0;i<Aryan.length;i++)
+        {
+            System.out.print(Aryan[i]);
+        }
+    }
+}
+
+
+
+package helloworld;
+
+import java.net.*;  
+import java.io.*;  
+class MyClient{  
+public static void main(String args[])throws Exception{  
+Socket s=new Socket("localhost",1111);  
+DataInputStream din=new DataInputStream(s.getInputStream());  
+DataOutputStream dout=new DataOutputStream(s.getOutputStream());  
+BufferedReader br=new BufferedReader(new InputStreamReader(System.in));  
+String str="",str2="";  
+while(!str.equals("stop")){  
+str=br.readLine();  
+dout.writeUTF(str);  
+dout.flush();  
+str2=din.readUTF();  
+System.out.println("Server says: "+str2);  
+}  
+dout.close();  
+s.close();  
+}} 
+
+
+
+
+
+package helloworld;
+import java.net.*;  
+import java.io.*;  
+class MyServer{  
+public static void main(String args[])throws Exception{  
+ServerSocket ss=new ServerSocket(1111);  
+Socket s=ss.accept();  
+DataInputStream din=new DataInputStream(s.getInputStream());  
+DataOutputStream dout=new DataOutputStream(s.getOutputStream());  
+BufferedReader br=new BufferedReader(new InputStreamReader(System.in));  
+  String str="",str2="";  
+while(!str.equals("stop")){  
+str=din.readUTF();  
+System.out.println("client says: "+str);  
+str2=br.readLine();  
+dout.writeUTF(str2);  
+dout.flush();  
+}  
+din.close();  
+s.close();  
+ss.close();  
+}} 
+
+
+
+package helloworld;
+
+import java.net.*;  
+public class UrlClasss{  
+public static void main(String[] args){  
+try{  
+URL url=new URL("https://mitwpu.edu.in/school-of-polytechnic/");  
+  
+System.out.println("Protocol: "+url.getProtocol());  
+System.out.println("Host Name: "+url.getHost());  
+System.out.println("Port Number: "+url.getPort());  
+System.out.println("File Name: "+url.getFile());  
+  
+}
+catch(Exception e){
+	System.out.println(e);
+	}  
+}  
+}
+
+
+
+
+package helloworld;
+
+import java.net.*;
+import java.io.*;
+import java.util.*;
+public class URLContent
+{
+public static void main(String args[]) throws Exception
+{
+
+URL url = new URL("https://facebook.com/");
+URLConnection urlc = url.openConnection();
+InputStream dis=urlc.getInputStream();
+Scanner aa = new Scanner(new InputStreamReader(dis));
+        StringBuffer s = new StringBuffer();
+
+        while (aa.hasNext())
+        {
+            s.append(aa.next());
+        }
+        aa.close();
+
+        String content = s.toString();
+        content = content.replaceAll("<[^>]*>", "  ");
+       
+
+        System.out.println("content: " + content + "\n");
+long d = urlc.getDate();
+if(d == 0)
+System.out.println("No date Information.");
+else
+System.out.println("Date: "+new Date(d));
+System.out.println("c Type: "+urlc.getContentType());
+int len = urlc.getContentLength();
+if(len == -1)
+System.out.println("content length not available");
+else
+System.out.println("Lenght of the content: "+len);
+d = urlc.getExpiration();
+if(d==0)
+System.out.println("No expiration information.");
+else
+System.out.println("Expires: " + new Date(d));
+}
+}
+
+
+
+
