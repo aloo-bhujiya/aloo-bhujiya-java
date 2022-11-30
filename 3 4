@@ -1,0 +1,133 @@
+import javax.swing.*;
+import java.awt.event.*;
+
+class LoginPage extends JFrame implements ActionListener {
+    JButton submit;
+    JLabel username, password;
+    JTextField username_field, output;
+    JPasswordField password_field;
+
+    LoginPage() {
+
+        username = new JLabel("Username: ");
+        username.setBounds(100, 20, 80, 20);
+
+        username_field = new JTextField();
+        username_field.setBounds(100, 50, 150, 20);
+
+        password = new JLabel("Password: ");
+        password.setBounds(100, 80, 80, 20);
+
+        password_field = new JPasswordField();
+        password_field.setBounds(100, 110, 150, 20);
+
+        submit = new JButton("Submit");
+        submit.addActionListener(this);
+
+        submit.setBounds(100, 140, 80, 20);
+
+        output = new JTextField(5);
+        output.setBounds(100, 170, 250, 50);
+
+        add(username);
+        add(username_field);
+        add(password);
+        add(password_field);
+        add(submit);
+
+        setSize(400, 400);
+        setLayout(null);
+        setVisible(true);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }
+
+    public void actionPerformed (ActionEvent e) {
+        System.out.println("Login succesfull");
+    }
+
+    public static void main(String[] args) {
+        new LoginPage();
+    }
+
+}
+
+
+
+
+
+
+package helloworld;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class MouseAdapterExample extends MouseAdapter{
+    JFrame f;
+
+    MouseAdapterExample(){
+
+        f=new JFrame("Mouse Adapter");
+
+        f.addMouseListener(this);
+
+        f.setSize(300,300);
+
+        f.setLayout(null);
+
+        f.setVisible(true);
+
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); }
+
+    public void mouseClicked(MouseEvent e) {
+
+        Graphics g=f.getGraphics();
+
+        g.setColor(Color.BLUE);
+
+        g.fillOval(e.getX(),e.getY(),30,30);
+
+    }
+
+    public static void main(String[] args) {
+
+        new MouseAdapterExample();
+    }
+}
+
+
+
+
+import java.awt.*; 
+import java.awt.event.*;
+import javax.swing.*; 
+public class KeyAdapterExample extends KeyAdapter{  
+    JLabel l;  
+   JTextArea area;  
+    JFrame f;  
+    KeyAdapterExample(){  
+        f=new JFrame("Key Adapter");  
+        l=new JLabel();  
+        l.setBounds(20,50,200,20);  
+        area=new JTextArea();  
+        area.setBounds(20,80,300, 300);  
+        area.addKeyListener(this);  
+         f.add(l);f.add(area);  
+        f.setSize(400,400);  
+        f.setLayout(null);  
+        f.setVisible(true); f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }  
+    public void keyReleased(KeyEvent e) {  
+        String text=area.getText();  
+        String words[]=text.split("\\s");  
+        l.setText("Words: "+words.length+" Characters:"+text.length());  
+    }  
+      public static void main(String[] args) {  
+        new KeyAdapterExample(); }  }
+
+
+
+
+
