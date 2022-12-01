@@ -91,53 +91,25 @@ catch(Exception e){
 }
 
 
-
-
-package helloworld;
-
 import java.net.*;
 import java.io.*;
-import java.util.*;
 public class URLContent
 {
-public static void main(String args[]) throws Exception
-{
+    public static void main(String[] args) throws Exception 
+    {
+        URL url = new URL("https://www.google.com/");
+        URLConnection con = url.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
 
-URL url = new URL("https://facebook.com/");
-URLConnection urlc = url.openConnection();
-InputStream dis=urlc.getInputStream();
-Scanner aa = new Scanner(new InputStreamReader(dis));
-        StringBuffer s = new StringBuffer();
-
-        while (aa.hasNext())
-        {
-            s.append(aa.next());
-        }
-        aa.close();
-
-        String content = s.toString();
-        content = content.replaceAll("<[^>]*>", "  ");
-       
-
-        System.out.println("content: " + content + "\n");
-long d = urlc.getDate();
-if(d == 0)
-System.out.println("No date Information.");
-else
-System.out.println("Date: "+new Date(d));
-System.out.println("c Type: "+urlc.getContentType());
-int len = urlc.getContentLength();
-if(len == -1)
-System.out.println("content length not available");
-else
-System.out.println("Lenght of the content: "+len);
-d = urlc.getExpiration();
-if(d==0)
-System.out.println("No expiration information.");
-else
-System.out.println("Expires: " + new Date(d));
+        while ((inputLine = in.readLine()) != null) 
+            System.out.println(inputLine);
+        in.close();
+    }
 }
-}
+
+
+
 
 
 
